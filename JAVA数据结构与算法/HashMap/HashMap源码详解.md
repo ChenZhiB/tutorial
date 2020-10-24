@@ -368,3 +368,6 @@ final void removeTreeNode(HashMap<K,V> map, Node<K,V>[] tab,
 
 # 总结
 至此，HashMap的源码解析结算，红黑树部分并没有讲解，因为也只是数据结构上面的存储方式不同而已
+
+# 简书地址
+https://www.jianshu.com/p/e3467d83604e
