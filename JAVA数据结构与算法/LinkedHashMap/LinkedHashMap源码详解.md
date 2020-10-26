@@ -1,7 +1,10 @@
 # 目的
 JDK中已经有了HashMap为什么还需要有个LinkedHashMap呢？答案相信大家也知道，HashMap是无序的，而LinkedHashMap是有序的。那么当HashMap变成LinkedHashMap后它是如何去存储的？查询的性能是否是发生了变化，如果没有，它是怎么做到保证了查询性能的同时又保证了顺序的？这篇文章将深入LinkedHashMap源码对以上问题进行剖析，在了解LinkedHashMap源码之前请先看<<HashMap源码详解>>，我们将在它的基础上进行讲解，因为90%都是由HashMap实现的，对于HashMap的源码实现部分将直接粗略带过不再进行细讲
 # HashMap与LinkedHashMap数据结构对比
-首先，LinkedHashMap继承了HashMap，而且LinkedHashMap中定义了三个新字段分别是`head`、`tail`和`accessOrder`，我们将在后面讲解它们的作用![LinkedHashMap_UML.png](https://upload-images.jianshu.io/upload_images/18758351-dd9a454e0dad2e53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+首先，LinkedHashMap继承了HashMap，而且LinkedHashMap中定义了三个新字段分别是`head`、`tail`和`accessOrder`，我们将在后面讲解它们的作用
+
+![LinkedHashMap_UML.png](https://upload-images.jianshu.io/upload_images/18758351-dd9a454e0dad2e53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 同时，LinkedHashMap的`table`使用的也是HashMap的`table`，但是LinkedHashMap的`table`实现类并没有使用`HashMap.Node`，而是使用继承了`HashMap.Node`的`Entry`类，`Entry`类新增了两个字段`before`和`after`，将在后面讲解它们的作用![HashMap.Node_UML.png](https://upload-images.jianshu.io/upload_images/18758351-73fe7276d593cae3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![LinkedHashMap.Node_UML.png](https://upload-images.jianshu.io/upload_images/18758351-0b8cc3a4fe662f2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 # put方法
 LinkedHashMap使用的`put(K key, V value)`继承至HashMap，所以不再进行讲解
