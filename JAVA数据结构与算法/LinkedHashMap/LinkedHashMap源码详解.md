@@ -5,7 +5,9 @@ JDK中已经有了HashMap为什么还需要有个LinkedHashMap呢？答案相信
 
 ![LinkedHashMap_UML.png](https://upload-images.jianshu.io/upload_images/18758351-dd9a454e0dad2e53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-同时，LinkedHashMap的`table`使用的也是HashMap的`table`，但是LinkedHashMap的`table`实现类并没有使用`HashMap.Node`，而是使用继承了`HashMap.Node`的`Entry`类，`Entry`类新增了两个字段`before`和`after`，将在后面讲解它们的作用![HashMap.Node_UML.png](https://upload-images.jianshu.io/upload_images/18758351-73fe7276d593cae3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![LinkedHashMap.Node_UML.png](https://upload-images.jianshu.io/upload_images/18758351-0b8cc3a4fe662f2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+同时，LinkedHashMap的`table`使用的也是HashMap的`table`，但是LinkedHashMap的`table`实现类并没有使用`HashMap.Node`，而是使用继承了`HashMap.Node`的`Entry`类，`Entry`类新增了两个字段`before`和`after`，将在后面讲解它们的作用
+
+![HashMap.Node_UML.png](https://upload-images.jianshu.io/upload_images/18758351-73fe7276d593cae3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![LinkedHashMap.Node_UML.png](https://upload-images.jianshu.io/upload_images/18758351-0b8cc3a4fe662f2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 # put方法
 LinkedHashMap使用的`put(K key, V value)`继承至HashMap，所以不再进行讲解
 # putVal方法
